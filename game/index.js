@@ -9,7 +9,7 @@
         return $('#' + cell);
     }
 
-    function startGame(callback) {
+    function startGame() {
         $('#wrapper').removeClass('playing').empty();
         maze = new Maze($('#width').val(), $('#height').val());
 
@@ -40,11 +40,6 @@
         // Initialize player.
         player = maze.cells[maze.start];
         enlightPlayer();
-
-        // Callback.
-        if (typeof callback === 'function') {
-            callback();
-        }
     }
 
     function endGame() {
@@ -123,8 +118,6 @@
         });
 
         // Launch the game.
-        startGame(function () {
-            alert('Welcome to "Escape The Maze"!\n\nUse your arrows keys to move and find the maze exit.')
-        });
+        startGame();
     });
 }(jQuery));
