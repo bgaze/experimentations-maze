@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+
+html { 
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background: #000;
+    text-align: center;
+}
+
+#menu{
+    padding: 20px 0;
+
+    > *{
+        margin: 0 5px;
+    }
+
+    label{
+        color: #fff;
+    }
+}
+
+#wrapper { 
+    display: inline-block;
+    border: 1px solid black; 
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#maze {
+    .cell {
+        float: left;
+        width: 30px; 
+        height: 30px;
+
+        &.bu{
+            border-top: 1px solid black;
+        }
+
+        &.br{
+            border-right: 1px solid black;
+        }
+
+        &.bd{
+            border-bottom: 1px solid black;
+        }
+
+        &.bl{
+            border-left: 1px solid black;
+        }
+
+        &.visible{
+            background: #fff;
+
+            &.visited{
+                background: #eee;
+            }
+
+            &.path{
+                background: #ccc;
+            }
+
+            &.exit {
+                background-color: darkgreen;
+            }       
+
+            &.player{
+                background: darkblue !important;
+            }
+        }
+    }       
+}

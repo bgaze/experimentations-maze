@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box; }
+
+html {
+  margin: 0;
+  padding: 0;
+  background: #000; }
+
+body {
+  margin: 0;
+  padding: 10px;
+  background: #000;
+  text-align: center; }
+
+#menu {
+  padding: 20px 0; }
+  #menu > * {
+    margin: 0 5px; }
+  #menu label {
+    color: #fff; }
+
+#wrapper {
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0 auto;
+  overflow: hidden; }
+
+#maze .cell {
+  float: left;
+  width: 30px;
+  height: 30px; }
+  #maze .cell.bu {
+    border-top: 1px solid black; }
+  #maze .cell.br {
+    border-right: 1px solid black; }
+  #maze .cell.bd {
+    border-bottom: 1px solid black; }
+  #maze .cell.bl {
+    border-left: 1px solid black; }
+  #maze .cell.visible {
+    background: #fff; }
+    #maze .cell.visible.visited {
+      background: #eee; }
+    #maze .cell.visible.path {
+      background: #ccc; }
+    #maze .cell.visible.exit {
+      background-color: darkgreen; }
+    #maze .cell.visible.player {
+      background: darkblue !important; }
+
+/*# sourceMappingURL=game.css.map */
