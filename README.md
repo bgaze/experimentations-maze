@@ -15,7 +15,7 @@ For both case, performances drop quickly when increasing the maze size, but up t
   
 Any comment / improvement / suggestion / explanation is highly welcomed.
 
-I've also build a very basic game using the Javascript implémentation.  
+I've also build a very basic game using the Javascript implementation.  
 You can give it a try here : [Escape The MAze](https://escape-the-maze.netlify.com/game/)
 
 ![Maze example](maze.png)
