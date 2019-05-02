@@ -1,4 +1,6 @@
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -17,6 +19,7 @@ body {
     padding: 10px;
     background: #000;
     text-align: center;
+    background-color: black;
 }
 
 #menu{
@@ -49,9 +52,6 @@ body {
     margin: 0 auto;
     overflow: hidden;
 }
-
-* { padding: 0; margin: 0; box-sizing: border-box; }
-body { background-color: black; }
 
 #maze {
     background: #777;
@@ -113,7 +113,7 @@ body { background-color: black; }
                 opacity: 1;
                 border-color: rgba(#000, .5);
             }
-            
+
             &.path{
                 position: relative;
                 overflow: hidden;
@@ -196,6 +196,21 @@ body { background-color: black; }
                 background: url(./sprites/stair.png) no-repeat center center / cover;
             }       
 
+            &.start {
+                position: relative;
+
+                &:before{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background: url(./sprites/start.png) no-repeat center center / 40% auto;
+                    opacity: 0.8;
+                }
+            }       
+
             &.player{
                 position: relative;
 
@@ -206,7 +221,7 @@ body { background-color: black; }
                     right: 0;
                     bottom: 0;
                     left: 0;
-                    background: url(./sprites/player.png) no-repeat center center / 80% auto;
+                    background: url(./sprites/player.gif) no-repeat center center / 90% auto;
                 }
             }
         }

@@ -42,7 +42,7 @@
         $('<div>').html(cells).attr('id', 'maze').css({width: maze.width * 30, height: maze.height * 30}).appendTo('#wrapper');
 
         // Customize special points.
-        $c(maze.start).addClass('player').addClass('visited');
+        $c(maze.start).addClass('start').addClass('player').addClass('visited');
         $c(maze.end).addClass('exit');
 
         // Initialize player.
@@ -71,7 +71,7 @@
         $c(player).removeClass('player');
         $('.cell').addClass('visible');
 
-        var prev, current, next, tmp, x1, x2, y1, y2;
+        var prev, current, next, tmp;
 
         for (var i = 0; i < maze.solution.length; i++) {
             prev = (i === 0) ? maze.cells[maze.start] : maze.cells[maze.solution[i - 1]];

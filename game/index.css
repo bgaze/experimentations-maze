@@ -1,4 +1,6 @@
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -14,7 +16,8 @@ body {
   margin: 0;
   padding: 10px;
   background: #000;
-  text-align: center; }
+  text-align: center;
+  background-color: black; }
 
 #menu {
   margin: 0 0 10px 0; }
@@ -36,14 +39,6 @@ body {
   border: 1px solid black;
   margin: 0 auto;
   overflow: hidden; }
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box; }
-
-body {
-  background-color: black; }
 
 #maze {
   background: #777;
@@ -151,6 +146,17 @@ body {
           width: 11px; }
       #maze .cell.visible.exit {
         background: url(./sprites/stair.png) no-repeat center center/cover; }
+      #maze .cell.visible.start {
+        position: relative; }
+        #maze .cell.visible.start:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: url(./sprites/start.png) no-repeat center center/40% auto;
+          opacity: 0.8; }
       #maze .cell.visible.player {
         position: relative; }
         #maze .cell.visible.player:after {
@@ -160,7 +166,7 @@ body {
           right: 0;
           bottom: 0;
           left: 0;
-          background: url(./sprites/player.png) no-repeat center center/80% auto; }
+          background: url(./sprites/player.gif) no-repeat center center/90% auto; }
 
 #footer {
   position: fixed;
