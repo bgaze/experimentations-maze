@@ -74,6 +74,9 @@ function Maze(width, height) {
         // Remove start & end from solution.
         this.solution.shift();
         this.solution.pop();
+        
+        // Reverse solution.
+        this.solution = this.solution.reverse();
     }
 
     // Public.
