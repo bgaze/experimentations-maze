@@ -1,6 +1,10 @@
 (function ($) {
     var maze, player;
 
+    function rand(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     function $c(cell) {
         if (cell instanceof Cell) {
             return $('#' + cell.id);
@@ -26,6 +30,10 @@
                     .toggleClass('bd', cell.down === false)
                     .toggleClass('bl', cell.left === false);
 
+            if (cell.id !== maze.end) {
+                tmp.addClass('tile' + rand(1, 6));
+            }
+
             cells += $('<div>').append(tmp).html();
         }
 
@@ -42,10 +50,39 @@
         enlightPlayer();
     }
 
+    function relativePosition(c1, c2) {
+        if (c1.x < c2.x) {
+            return 'l';
+        }
+
+        if (c1.x > c2.x) {
+            return 'r';
+        }
+
+        if (c1.y < c2.y) {
+            return 't';
+        }
+
+        return 'b';
+    }
+
     function endGame() {
         $('#wrapper').removeClass('playing');
+        $c(player).removeClass('player');
         $('.cell').addClass('visible');
-        $('#' + maze.solution.join(',#')).addClass('path');
+
+        var prev, current, next, tmp, x1, x2, y1, y2;
+
+        for (var i = 0; i < maze.solution.length; i++) {
+            prev = (i === 0) ? maze.cells[maze.start] : maze.cells[maze.solution[i - 1]];
+            current = maze.cells[maze.solution[i]];
+            next = (i === maze.solution.length - 1) ? maze.cells[maze.end] : maze.cells[maze.solution[i + 1]];
+
+            tmp = [relativePosition(prev, current), relativePosition(next, current)].sort().join('');
+
+            $c(current).addClass('path').addClass('path-' + tmp);
+        }
+
     }
 
     function enlightPlayer() {

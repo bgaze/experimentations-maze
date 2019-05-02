@@ -50,45 +50,164 @@ body {
     overflow: hidden;
 }
 
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body { background-color: black; }
+
 #maze {
+    background: #777;
+    position: relative;
+    overflow: hidden;
+
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200vw;
+        height: 100%;
+        background-size: auto 100%;
+        background-position: 0px 0px;
+        background-repeat: repeat-x;
+    }
+
+    &:before {
+        background-image: url(./sprites/fog1.png);
+    }
+
+    &:after {
+        background-image: url(./sprites/fog2.png);
+    }
+
     .cell {
         float: left;
         width: 30px; 
         height: 30px;
+        opacity: 0;
 
         &.bu{
-            border-top: 1px solid black;
+            border-top: 2px solid black;
         }
 
         &.br{
-            border-right: 1px solid black;
+            border-right: 2px solid black;
         }
 
         &.bd{
-            border-bottom: 1px solid black;
+            border-bottom: 2px solid black;
         }
 
         &.bl{
-            border-left: 1px solid black;
+            border-left: 2px solid black;
+        }
+
+        @for $i from 1 through 6{
+            &.tile#{$i}{
+                background: url(./sprites/tile#{$i}.png) no-repeat center center / cover;
+            }
         }
 
         &.visible{
-            background: #fff;
+            opacity: 0.5;
 
             &.visited{
-                background: #eee;
+                opacity: 1;
+                border-color: rgba(#000, .5);
             }
-
+            
             &.path{
-                background: #ccc;
+                position: relative;
+                overflow: hidden;
+
+                &:after{
+                    content: "";
+                    position: absolute;
+                }
+
+                &.visited:after{
+                    opacity: .5;
+                }
+
+                &.path-bl:after{
+                    border-top: 4px solid red;
+                    border-right: 4px solid red;
+                    border-top-right-radius: 5px;
+                    height: 13px;
+                    width: 13px;
+                    left: 0;
+                    bottom: 0;
+                }
+
+                &.path-br:after{ 
+                    border-top: 4px solid red;
+                    border-left: 4px solid red;
+                    border-top-left-radius: 5px;
+                    height: 13px;
+                    width: 13px;
+                    right: 0;
+                    bottom: 0;
+                }
+
+                &.path-lt:after{
+                    border-bottom: 4px solid red;
+                    border-right: 4px solid red;
+                    border-bottom-right-radius: 5px;
+                    height: 13px;
+                    width: 13px;
+                    left: 0;
+                    top: 0;
+                }
+
+                &.path-rt:after{
+                    border-bottom: 4px solid red;
+                    border-left: 4px solid red;
+                    border-bottom-left-radius: 5px;
+                    height: 13px;
+                    width: 13px;
+                    right: 0;
+                    top: 0;
+                }
+
+                &.path-lr:after{
+                    border-top: 4px solid red;
+                    height: 13px;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                }
+
+                &.bd.path-lr:after{
+                    height: 11px;
+                }
+
+                &.path-bt:after{
+                    border-right: 4px solid red;
+                    width: 13px;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                }
+
+                &.bl.path-bt:after{
+                    width: 11px;
+                }
             }
 
             &.exit {
-                background-color: darkgreen;
+                background: url(./sprites/stair.png) no-repeat center center / cover;
             }       
 
             &.player{
-                background: darkblue !important;
+                position: relative;
+
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background: url(./sprites/player.png) no-repeat center center / 80% auto;
+                }
             }
         }
     }       

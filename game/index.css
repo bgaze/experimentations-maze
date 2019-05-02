@@ -37,28 +37,130 @@ body {
   margin: 0 auto;
   overflow: hidden; }
 
-#maze .cell {
-  float: left;
-  width: 30px;
-  height: 30px; }
-  #maze .cell.bu {
-    border-top: 1px solid black; }
-  #maze .cell.br {
-    border-right: 1px solid black; }
-  #maze .cell.bd {
-    border-bottom: 1px solid black; }
-  #maze .cell.bl {
-    border-left: 1px solid black; }
-  #maze .cell.visible {
-    background: #fff; }
-    #maze .cell.visible.visited {
-      background: #eee; }
-    #maze .cell.visible.path {
-      background: #ccc; }
-    #maze .cell.visible.exit {
-      background-color: darkgreen; }
-    #maze .cell.visible.player {
-      background: darkblue !important; }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: black; }
+
+#maze {
+  background: #777;
+  position: relative;
+  overflow: hidden; }
+  #maze:before, #maze:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 100%;
+    background-size: auto 100%;
+    background-position: 0px 0px;
+    background-repeat: repeat-x; }
+  #maze:before {
+    background-image: url(./sprites/fog1.png); }
+  #maze:after {
+    background-image: url(./sprites/fog2.png); }
+  #maze .cell {
+    float: left;
+    width: 30px;
+    height: 30px;
+    opacity: 0; }
+    #maze .cell.bu {
+      border-top: 2px solid black; }
+    #maze .cell.br {
+      border-right: 2px solid black; }
+    #maze .cell.bd {
+      border-bottom: 2px solid black; }
+    #maze .cell.bl {
+      border-left: 2px solid black; }
+    #maze .cell.tile1 {
+      background: url(./sprites/tile1.png) no-repeat center center/cover; }
+    #maze .cell.tile2 {
+      background: url(./sprites/tile2.png) no-repeat center center/cover; }
+    #maze .cell.tile3 {
+      background: url(./sprites/tile3.png) no-repeat center center/cover; }
+    #maze .cell.tile4 {
+      background: url(./sprites/tile4.png) no-repeat center center/cover; }
+    #maze .cell.tile5 {
+      background: url(./sprites/tile5.png) no-repeat center center/cover; }
+    #maze .cell.tile6 {
+      background: url(./sprites/tile6.png) no-repeat center center/cover; }
+    #maze .cell.visible {
+      opacity: 0.5; }
+      #maze .cell.visible.visited {
+        opacity: 1;
+        border-color: rgba(0, 0, 0, 0.5); }
+      #maze .cell.visible.path {
+        position: relative;
+        overflow: hidden; }
+        #maze .cell.visible.path:after {
+          content: "";
+          position: absolute; }
+        #maze .cell.visible.path.visited:after {
+          opacity: .5; }
+        #maze .cell.visible.path.path-bl:after {
+          border-top: 4px solid red;
+          border-right: 4px solid red;
+          border-top-right-radius: 5px;
+          height: 13px;
+          width: 13px;
+          left: 0;
+          bottom: 0; }
+        #maze .cell.visible.path.path-br:after {
+          border-top: 4px solid red;
+          border-left: 4px solid red;
+          border-top-left-radius: 5px;
+          height: 13px;
+          width: 13px;
+          right: 0;
+          bottom: 0; }
+        #maze .cell.visible.path.path-lt:after {
+          border-bottom: 4px solid red;
+          border-right: 4px solid red;
+          border-bottom-right-radius: 5px;
+          height: 13px;
+          width: 13px;
+          left: 0;
+          top: 0; }
+        #maze .cell.visible.path.path-rt:after {
+          border-bottom: 4px solid red;
+          border-left: 4px solid red;
+          border-bottom-left-radius: 5px;
+          height: 13px;
+          width: 13px;
+          right: 0;
+          top: 0; }
+        #maze .cell.visible.path.path-lr:after {
+          border-top: 4px solid red;
+          height: 13px;
+          right: 0;
+          left: 0;
+          bottom: 0; }
+        #maze .cell.visible.path.bd.path-lr:after {
+          height: 11px; }
+        #maze .cell.visible.path.path-bt:after {
+          border-right: 4px solid red;
+          width: 13px;
+          top: 0;
+          left: 0;
+          bottom: 0; }
+        #maze .cell.visible.path.bl.path-bt:after {
+          width: 11px; }
+      #maze .cell.visible.exit {
+        background: url(./sprites/stair.png) no-repeat center center/cover; }
+      #maze .cell.visible.player {
+        position: relative; }
+        #maze .cell.visible.player:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: url(./sprites/player.png) no-repeat center center/80% auto; }
 
 #footer {
   position: fixed;
