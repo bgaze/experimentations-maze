@@ -46,14 +46,17 @@ body {
 
         &.random {
             background-color: darkblue; 
+            cursor: pointer;
         }     
 
         &.entrance {
             background-color: darkred; 
+            cursor: pointer;
         }     
 
         &.exit {
             background-color: darkgreen;
+            cursor: pointer;
         }         
 
         &.path{

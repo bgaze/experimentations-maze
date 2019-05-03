@@ -69,6 +69,8 @@ foreach ($maze->cells() as $cell) {
         <link href="demo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <p>Please hover the coloured dots to reveal pathes:</p>
+        
         <div id="wrapper" class="border">
             <div id="maze" style="width:<?= $maze->width() * 20 ?>px; height:<?= $maze->height() * 20 ?>px;">
                 <?= $cells ?>

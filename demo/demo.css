@@ -31,11 +31,14 @@ body {
   #maze .cell.bl {
     border-left: 1px solid black; }
   #maze .cell.random {
-    background-color: darkblue; }
+    background-color: darkblue;
+    cursor: pointer; }
   #maze .cell.entrance {
-    background-color: darkred; }
+    background-color: darkred;
+    cursor: pointer; }
   #maze .cell.exit {
-    background-color: darkgreen; }
+    background-color: darkgreen;
+    cursor: pointer; }
   #maze .cell.path {
     background: #ddd; }
 
